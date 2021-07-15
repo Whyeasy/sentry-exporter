@@ -3,7 +3,7 @@ before:
   hooks:
     - go mod download
 builds:
-  - main: "./cmd/jira-sd-exporter/main.go"
+  - main: "./cmd/sentry-exporter/main.go"
     binary: "{{ .ProjectName }}"
     env:
       - CGO_ENABLED=0
