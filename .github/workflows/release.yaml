@@ -24,10 +24,13 @@ jobs:
           args: release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: "whyeasy/sentry-exporter:${{ github.ref }}"
+          image-ref: "whyeasy/sentry-exporter:${{ steps.get_version.outputs.VERSION }}"
           format: "table"
           exit-code: "1"
           severity: "CRITICAL,HIGH"
