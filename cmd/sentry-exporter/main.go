@@ -108,7 +108,7 @@ func initLogger() {
 	}
 	ll, err := log.ParseLevel(config.LogLevel)
 	if err != nil {
-		ll = log.DebugLevel
+		ll = log.InfoLevel
 	}
 	log.SetLevel(ll)
 }
